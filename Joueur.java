@@ -2,24 +2,30 @@ import java.security.SecureRandom;
 
 public class Joueur {
 
-	private Sting nom;
-	private int nbcoeur = 5;
-	private int Random random;
+    private String nom;
+    private int nbCoeur;
+    private SecureRandom random;
 
-	public Joueur(String nom) {
-		this.nom = nom;
+    public Joueur(String nom) {
+        this.nom = nom;
+        this.nbCoeur = 5;
 
-	}
+        try {
+            random = SecureRandom.getInstanceStrong();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	try {
-		random = SecureRandom.getInstanceStrong();
-	} 
-	catch( Exception e) {
-		e.printStackTrace();
-	}
+    public int lanceDe() {
+        return random.nextInt(11) + 2;
+    }
 
-	public int lanceDe() {
-		return random.nextInt(2,13);
-	}
+    public String getNom() {
+        return nom;
+    }
 
+    public int getNbCoeur() {
+        return nbCoeur;
+    }
 }
