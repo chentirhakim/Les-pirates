@@ -1,4 +1,4 @@
-package src.jeu;
+package src2.jeu;
 
 public class PlusOuMoins extends Case {
 

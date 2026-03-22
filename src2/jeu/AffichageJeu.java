@@ -1,4 +1,4 @@
-package src.jeu;
+package src2.jeu;
 
 public class AffichageJeu implements IAffichage {
 
@@ -32,12 +32,24 @@ public class AffichageJeu implements IAffichage {
     public void afficherCoeurs(Joueur joueur) {
         System.out.println(joueur.getNom() + " a maintenant " + joueur.getNbCoeurs() + " coeur(s).");
     }
-// Cases spéciales à préciser "fonctionnement"
     @Override
     public void afficherCaseSpeciale(Joueur joueur, String typeCase) {
-        System.out.println("-> CASE SPECIALE [" + typeCase + "] pour " + joueur.getNom() + " !");
+        switch (typeCase) {
+            case "Demi-Tour":
+                System.out.println("CASE SPECIALE DEMI-TOUR !");
+                System.out.println(joueur.getNom() + " doit reculer du même nombre de cases qu'il vient d'avancer !");
+                break;
+            case "Plus ou Moins":
+                System.out.println("CASE SPECIALE PLUS OU MOINS !");
+                System.out.println(joueur.getNom() + " lance 1 dé :");
+                System.out.println("  - Résultat <= 3 : perd 1 coeur");
+                System.out.println("  - Résultat >= 4 : gagne 1 coeur");
+                break;
+            default:
+                System.out.println("CASE SPECIALE pour " + joueur.getNom());
+                break;
+        }
     }
-
     @Override
     public void afficherGagnant(Joueur gagnant) {
         System.out.println("VICTOIRE ! " + gagnant.getNom() + " remporte la partie !");
